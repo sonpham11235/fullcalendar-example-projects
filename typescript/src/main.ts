@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   class CustomDayHeader extends Component<{ text: string }> {
     render() {
-      return createElement('div', {}, '!' + this.props.text + '!')
+      return createElement('div', {}, this.props.text)
     }
   }
 
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
       center: 'title',
       right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
     },
-    initialDate: '2018-01-12',
+    initialDate: Date.now(),
     navLinks: true, // can click day/week names to navigate views
     editable: true,
     dayMaxEvents: true, // allow "more" link when too many events
@@ -30,58 +30,24 @@ document.addEventListener('DOMContentLoaded', function() {
     },
     events: [
       {
-        title: 'All Day Event',
-        start: '2018-01-01',
-      },
-      {
         title: 'Long Event',
-        start: '2018-01-07',
-        end: '2018-01-10'
+        start: '2020-10-20',
+        end: '2020-10-22'
       },
       {
         groupId: '999',
         title: 'Repeating Event',
-        start: '2018-01-09T16:00:00'
-      },
-      {
-        groupId: '999',
-        title: 'Repeating Event',
-        start: '2018-01-16T16:00:00'
-      },
-      {
-        title: 'Conference',
-        start: '2018-01-11',
-        end: '2018-01-13'
+        start: '2020-10-23T16:00:00'
       },
       {
         title: 'Meeting',
-        start: '2018-01-12T10:30:00',
-        end: '2018-01-12T12:30:00'
-      },
-      {
-        title: 'Lunch',
-        start: '2018-01-12T12:00:00'
-      },
-      {
-        title: 'Meeting',
-        start: '2018-01-12T14:30:00'
-      },
-      {
-        title: 'Happy Hour',
-        start: '2018-01-12T17:30:00'
-      },
-      {
-        title: 'Dinner',
-        start: '2018-01-12T20:00:00'
-      },
-      {
-        title: 'Birthday Party',
-        start: '2018-01-13T07:00:00'
+        start: '2020-10-24T10:30:00',
+        end: '2020-10-24T12:30:00'
       },
       {
         title: 'Click for Google',
         url: 'http://google.com/',
-        start: '2018-01-28'
+        start: '2020-10-25'
       }
     ]
   });
