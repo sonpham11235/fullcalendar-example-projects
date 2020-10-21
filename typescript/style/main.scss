@@ -1,6 +1,8 @@
 @import "~bootstrap/scss/bootstrap";
 
 $white: #ffffff;
+$purple-haze: #3F249E;
+$violet: #CDB3FF;
 $deep-blue: #084E9E;
 $neon-blue: #1779EB;
 $light-blue: #3392FF;
@@ -11,6 +13,12 @@ $default-font-family: Arial, Helvetica, sans-serif;
     color: $white;
     background-color: $neon-blue;
     border-color: $deep-blue;
+}
+
+@mixin buttonDisabled {
+    color: $violet;
+    background-color: $purple-haze;
+    border-color: $white;
 }
 
 @mixin buttonSelected {
@@ -40,6 +48,14 @@ body {
 
 #calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group .fc-button {
     @include buttonDefault();
+}
+
+#calendar .fc-today-button {
+    @include buttonDefault();
+}
+
+#calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group .fc-button:disabled {
+    @include buttonDisabled();
 }
 
 #calendar .fc-header-toolbar .fc-toolbar-chunk .fc-button-group .fc-button-active {
