@@ -1,3 +1,22 @@
+$white: #ffffff;
+$deep-blue: #084E9E;
+$neon-blue: #1779EB;
+$light-blue: #3392FF;
+
+@mixin buttonDefault {
+    color: $white;
+    background-color: $neon-blue;
+    border-color: $deep-blue;
+}
+
+@mixin buttonSelected {
+    color: $white;
+    background-color: $deep-blue;
+    border-color: $light-blue;
+
+    z-index: 1;
+}
+
 body {
     margin: 40px 10px;
     padding: 0;
@@ -8,4 +27,8 @@ body {
 #calendar {
     max-width: 900px;
     margin: 0 auto;
+}
+
+.scss-button-active {
+    @include buttonSelected();
 }
