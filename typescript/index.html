@@ -1,14 +1,38 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset='utf-8' />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href='dist/main.css' rel='stylesheet' />
+<head>
+	<meta charset='utf-8' />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <script src='dist/main.js'></script>
-  </head>
-  <body>
-    <div id='calendar'></div>
-  </body>
+	<link href='dist/main.css' rel='stylesheet' />
+    <link href="./sumoselect/sumoselect.css" rel="stylesheet" />
+	
+	<script src='dist/main.js'></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+	<script src="sumoselect/jquery.sumoselect.js"></script>
+
+	<script>
+		$(document).ready(function() {
+			$('.select-box').SumoSelect({ 
+				search: true,
+				searchText:'Enter here.',
+				placeholder: 'No option'
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div class="status-block">
+		<p>Status</p>
+		<select name='Status' class='select-box' multiple='multiple'>
+			<option value='new'>New</option>
+			<option value='inprogress'>Inprogress</option>
+			<option value='closed'>Closed</option>
+		</select>
+	</div>
+	<div id='calendar'></div>
+</body>
+
 </html>
