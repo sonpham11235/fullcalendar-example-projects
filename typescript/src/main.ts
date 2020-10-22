@@ -6,11 +6,27 @@ import listPlugin from '@fullcalendar/list';
 
 import '../style/main.scss';
 
-import 'bootstrap';
-import 'sumoselect';
-import 'jquery';
+import events from "./status";
+import OnSelectStatus from "./status";
 
-document.addEventListener('DOMContentLoaded', function () {
+$(document).ready(function () {
+	initFilter();
+	initCalendar();
+	bindEvent();
+});
+
+function initFilter() {
+	// Init sumo select
+	// @ts-ignore
+	$('.status').SumoSelect({ 
+		search: true,
+		searchText:'Enter here.',
+		placeholder: 'No option'
+	});
+	
+};
+
+function initCalendar(){
 	let calendarEl: HTMLElement = document.getElementById('calendar')!;
 
 	class CustomDayHeader extends Component<{ text: string }> {
@@ -26,36 +42,22 @@ document.addEventListener('DOMContentLoaded', function () {
 			center: 'title',
 			right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
 		},
-		initialDate: Date.now(),
+		initialDate: new Date(),
 		navLinks: true, // can click day/week names to navigate views
 		editable: true,
 		dayMaxEvents: true, // allow "more" link when too many events
 		dayHeaderContent(arg: DayHeaderContentArg) {
 			return createElement(CustomDayHeader, { text: arg.text })
 		},
-		events: [
-			{
-				title: 'Long Event',
-				start: '2020-10-20',
-				end: '2020-10-22'
-			},
-			{
-				groupId: '999',
-				title: 'Repeating Event',
-				start: '2020-10-23T16:00:00'
-			},
-			{
-				title: 'Meeting',
-				start: '2020-10-24T10:30:00',
-				end: '2020-10-24T12:30:00'
-			},
-			{
-				title: 'Click for Google',
-				url: 'http://google.com/',
-				start: '2020-10-25'
-			}
-		]
+		events
 	});
 
 	calendar.render();
-});
+}
+
+function bindEvent(){
+	$('#status').on('change', function () {
+		// Re filter calendar.
+		
+	});
+}

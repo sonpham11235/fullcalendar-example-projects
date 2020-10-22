@@ -44,7 +44,9 @@ module.exports = {
   },
   output: {
     filename: 'main.js',
-    path: path.join(__dirname, 'dist')
+    path: path.join(__dirname, 'dist'),
+    library: 'calendarLibrary',
+    libraryTarget: 'umd'
   },
   plugins: [
     new MiniCssExtractPlugin({

@@ -8,25 +8,15 @@
 	<link href='dist/main.css' rel='stylesheet' />
     <link href="./sumoselect/sumoselect.css" rel="stylesheet" />
 	
-	<script src='dist/main.js'></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 	<script src="sumoselect/jquery.sumoselect.js"></script>
-
-	<script>
-		$(document).ready(function() {
-			$('.select-box').SumoSelect({ 
-				search: true,
-				searchText:'Enter here.',
-				placeholder: 'No option'
-			});
-		});
-	</script>
+	<script src='dist/main.js'></script>
 </head>
 
 <body>
 	<div class="status-block">
 		<p>Status</p>
-		<select name='Status' class='select-box' multiple='multiple'>
+		<select name='status' id="status" class='status' multiple='multiple'">
 			<option value='new'>New</option>
 			<option value='inprogress'>Inprogress</option>
 			<option value='closed'>Closed</option>
