@@ -6,10 +6,10 @@ import listPlugin from '@fullcalendar/list';
 
 import '../style/main.scss';
 
-import events from "./status";
-import OnSelectStatus from "./status";
+import { events } from "./status";
+import { OnSelectStatus } from "./status";
 
-$(document).ready(function () {
+document.addEventListener("DOMContentLoaded", function () {
 	initFilter();
 	initCalendar();
 	bindEvent();
@@ -58,6 +58,6 @@ function initCalendar(){
 function bindEvent(){
 	$('#status').on('change', function () {
 		// Re filter calendar.
-		
+		OnSelectStatus();
 	});
 }

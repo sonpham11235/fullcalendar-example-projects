@@ -4,11 +4,20 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
 
-var events = [
+export const events = [
 	{
 		title: 'Long Event',
 		start: '2020-10-20',
 		end: '2020-10-22'
+	},
+	{
+		title: 'onboarding date',
+		start: '2020-10-5'
+	},
+	{
+		title: 'web front-end study',
+		start: '2020-10-19',
+		end: '2020-10-24'
 	},
 	{
 		groupId: '999',
@@ -27,7 +36,7 @@ var events = [
 	}
 ]
 
-function OnSelectStatus() : void {
+export function OnSelectStatus() : void {
 	let selectNode: HTMLElement = document.getElementById('status')!;
 	let m_select: HTMLSelectElement = <HTMLSelectElement>selectNode;
 	let optionLength: number = m_select.options.length;
@@ -98,14 +107,11 @@ function  FilterEvent(selectedOptions: string[]) : object[] {
 		}
 
 		if (selectedOptions.indexOf('closed') > -1) {
-			filteredEvents.push(m_event);
+			if (today > new Date(m_event.start)) {
+				filteredEvents.push(m_event);
+			}
 		}
 	});
 
 	return filteredEvents;
-}
-
-export default {
-    events,
-    OnSelectStatus
 }
