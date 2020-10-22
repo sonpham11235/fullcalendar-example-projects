@@ -1,11 +1,4 @@
-import { Calendar, Component, createElement, DayHeaderContentArg } from '@fullcalendar/core';
-import interactionPlugin from '@fullcalendar/interaction';
-import dayGridPlugin from '@fullcalendar/daygrid';
-import timeGridPlugin from '@fullcalendar/timegrid';
-import listPlugin from '@fullcalendar/list';
-
 import '../style/main.scss';
-
 import { events, OnSelectStatus, RenderCalendar } from "./status";
 
 document.addEventListener("DOMContentLoaded", function () {
