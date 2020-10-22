@@ -8,21 +8,24 @@
 	<link href='dist/main.css' rel='stylesheet' />
     <link href="./sumoselect/sumoselect.css" rel="stylesheet" />
 	
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+	<script src="./node_modules/jquery/dist/jquery.min.js"></script>
 	<script src="sumoselect/jquery.sumoselect.js"></script>
+	<script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src='dist/main.js'></script>
 </head>
 
 <body>
-	<div class="status-block">
-		<p>Status</p>
-		<select name='status' id="status" class='status' multiple='multiple'">
-			<option value='new'>New</option>
-			<option value='inprogress'>Inprogress</option>
-			<option value='closed'>Closed</option>
-		</select>
+	<div class="container-fluid">
+		<div class="status-block">
+			<p>Status</p>
+			<select name='status' id="status" class='status' multiple='multiple'">
+				<option value='new'>New</option>
+				<option value='inprogress'>Inprogress</option>
+				<option value='closed'>Closed</option>
+			</select>
+		</div>
+		<div id='calendar'></div>
 	</div>
-	<div id='calendar'></div>
 </body>
 
 </html>

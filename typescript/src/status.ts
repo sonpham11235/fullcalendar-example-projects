@@ -4,7 +4,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
 
-export const events = [
+const events = [
 	{
 		title: 'Long Event',
 		start: '2020-10-20',
@@ -12,7 +12,7 @@ export const events = [
 	},
 	{
 		title: 'onboarding date',
-		start: '2020-10-5'
+		start: '2020-10-05'
 	},
 	{
 		title: 'web front-end study',
@@ -36,7 +36,7 @@ export const events = [
 	}
 ]
 
-export function OnSelectStatus() : void {
+function OnSelectStatus() : void {
 	let selectNode: HTMLElement = document.getElementById('status')!;
 	let m_select: HTMLSelectElement = <HTMLSelectElement>selectNode;
 	let optionLength: number = m_select.options.length;
@@ -49,10 +49,10 @@ export function OnSelectStatus() : void {
 	}
 
 	var filteredEvents: object[] = FilterEvent(selectedOptions);
-	ReRenderCalendar(filteredEvents);
+	RenderCalendar(filteredEvents);
 }
 
-function ReRenderCalendar(filteredEvents: object[]) : void {
+function RenderCalendar(filteredEvents: object[]) : void {
 	let calendarEl: HTMLElement = document.getElementById('calendar')!;
 
 	class CustomDayHeader extends Component<{ text: string }> {
@@ -84,12 +84,13 @@ function ReRenderCalendar(filteredEvents: object[]) : void {
 function  FilterEvent(selectedOptions: string[]) : object[] {
 	var filteredEvents : object[] = [];
 	let today: Date = new Date();
+	let m_events = events;
 
 	if (selectedOptions.length == 0) {
-		return events;
+		return m_events;
 	}
 
-	events.map(m_event => {
+	m_events.map(m_event => {
 		if (selectedOptions.indexOf('new') > -1 
 				&& today < new Date(m_event.start)) {
 			filteredEvents.push(m_event);
@@ -108,10 +109,22 @@ function  FilterEvent(selectedOptions: string[]) : object[] {
 
 		if (selectedOptions.indexOf('closed') > -1) {
 			if (today > new Date(m_event.start)) {
-				filteredEvents.push(m_event);
+				if (m_event.end) {
+					if (today > new Date(m_event.end)) {
+						filteredEvents.push(m_event);
+					}
+				} else {
+					filteredEvents.push(m_event);
+				}
 			}
 		}
 	});
 
 	return filteredEvents;
+}
+
+export {
+	events,
+	OnSelectStatus,
+	RenderCalendar
 }
