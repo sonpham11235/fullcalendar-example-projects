@@ -15,7 +15,6 @@ function initFilter() : void {
 		searchText:'Enter here.',
 		placeholder: 'No option'
 	});
-	
 };
 
 function bindEvent() : void {
